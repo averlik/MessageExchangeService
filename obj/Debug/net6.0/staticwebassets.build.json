@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "5KhBxH+4NsPu2tW0ZV4+TZeYk3UTadO/nhAOeaV/O7c=",
+  "Source": "MessageExchangeService",
+  "BasePath": "_content/MessageExchangeService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
