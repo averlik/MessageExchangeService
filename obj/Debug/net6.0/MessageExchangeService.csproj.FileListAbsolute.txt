@@ -30,3 +30,13 @@ C:\Users\dnaum\source\repos\MessageExchangeService\obj\Debug\net6.0\refint\Messa
 C:\Users\dnaum\source\repos\MessageExchangeService\obj\Debug\net6.0\MessageExchangeService.pdb
 C:\Users\dnaum\source\repos\MessageExchangeService\obj\Debug\net6.0\MessageExchangeService.genruntimeconfig.cache
 C:\Users\dnaum\source\repos\MessageExchangeService\obj\Debug\net6.0\ref\MessageExchangeService.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Npgsql.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Humanizer.dll
+C:\Users\dnaum\source\repos\MessageExchangeService\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
