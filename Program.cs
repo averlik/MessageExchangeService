@@ -1,43 +1,57 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Npgsql;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.WebSockets;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+
+// PostgreSQL connection
+builder.Services.AddSingleton<NpgsqlConnection>(sp =>
+{
+    var conn = new NpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"));
+    conn.Open();
+    return conn;
+});
+
+// Add WebSocket support
+builder.Services.AddWebSockets(options =>
+{
+    options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
-
-var summaries = new[]
+// Enable Swagger for API documentation
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    "tae", "v", "jk", "jungckook", "rm", "j hope", "jin", "d august", "suga", "jimin"
-};
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Messaging API V1");
+});
 
-app.MapGet("/weatherforecast", () =>
+// Enable WebSockets
+app.UseWebSockets();
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    endpoints.MapControllers();
+});
+
+// Log application start
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("Application started");
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
